@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pemiliks', function (Blueprint $table) {
+        Schema::create('pemilik', function (Blueprint $table) {
             $table->increments('id_pemilik');
             $table->string('mn_pemilik')->default(50);
             $table->date('tgl_lahir');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pemiliks');
+        Schema::dropIfExists('pemilik');
     }
 };

@@ -9,7 +9,9 @@ class jnsKendaraan extends Model
 {
     use HasFactory;
 
-    protected $table = 'jns_kendaraans';
+    protected $table = 'jns_kendaraan';
+    protected $primaryKey = 'id_jns_kendaraan';
+    public $timestamps = false;
 
     protected $fillable = [
         'id_jns_kendaaraan',

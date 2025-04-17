@@ -18,24 +18,9 @@ class kendaraan extends Model
         'tahun_kendaraan',
         'no_mesin',
         'no_rangka',
-        'kapasitas',
+        'kapasitas_mesin',
         'transmisi',
         'id_jns_kendaraan',
         'id_pemilik',
     ];
-
-    public function pemilik()
-    {
-        return $this->belongsTo(Pemilik::class, 'id_pemilik');
-    }
-
-    public function jenis_kendaraan()
-    {
-        return $this->belongsTo(jnsKendaraan::class, 'id_jns_kendaraan');
-    }
-
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'id_kendaraan');
-    }
 }

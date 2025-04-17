@@ -17,7 +17,9 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Kendaraan</h3></div>
+              <div class="col-sm-6">
+                <h3 class="mb-0">Kendaraan</h3>
+              </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -30,37 +32,50 @@
           <!--end::Container-->
         </div>
 
-
         <div class="app-content">
           <!--begin::Container-->
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h3 class="card-title">Data Keseluruhan Kendaraan</h3>
-                      <a href="{{route('jnsKendaraan.create')}}">
+                      <a href="{{route('kendaraan.create')}}">
                         <input type="button" class="btn btn-success" value="Tambah">
                       </a>  
                     </div>
                     <div class="card-body p-0">
                         <table class="table table-striped">
                             <tr>
-                                    <td>No</td>
-                                    <td>Nama Kendaraan</td>
-                                    <td>Aksi</td>
+                                <th>No</th>
+                                <th>Nomor Polisi</th>
+                                <th>Tahun Kendaraan</th>
+                                <th>Nomor Mesin</th>
+                                <th>Nomor Rangka</th>
+                                <th>Kapasitas Mesin</th>
+                                <th>Transmisi</th>
+                                <th>Jenis Kendaraan</th>
+                                <th>Pemilik</th>
+                                <th>Aksi</th>
                             </tr>
                             @php $no = 1; @endphp
                             @foreach($data as $row)
 
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$row->nm_jns_service}}</td>
+                                <td>{{$row->no_pol}}</td>
+                                <td>{{$row->tahun_kendaraan}}</td>
+                                <td>{{$row->no_mesin}}</td>
+                                <td>{{$row->no_rangka}}</td>
+                                <td>{{$row->kapasitas_mesin}}</td>
+                                <td>{{$row->transmisi}}</td>
+                                <td>{{$row->jns_kendaraan}}</td>
+                                <td>{{$row->pemilik}}</td>
                                 <td>
-                                    <a href="{{route('jnsService.edit',$row->id_jns_service)}}">update</a>  
+                                    <a href="{{route('kendaraan.edit',$row->id_kendaraan)}}">update</a>  
                                     |  
-                                    <a href="{{route('jnsService.delete',$row->id_jns_service)}}">delete</a>
+                                    <a href="{{route('kendaraan.delete',$row->id_kendaraan)}}">delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -40,7 +40,7 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h3 class="card-title">Data Keseluruhan Jenis Service</h3>
-                      <a href="{{route('jnsKendaraan.create')}}">
+                      <a href="{{route('jnsservice.create')}}">
                         <input type="button" class="btn btn-success" value="Tambah">
                       </a>  
                     </div>
@@ -58,9 +58,9 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$row->nm_jns_service}}</td>
                                 <td>
-                                    <a href="{{route('jnsService.edit',$row->id_jns_service)}}">update</a>  
+                                    <a href="{{route('jnsservice.edit',$row->id_jns_service)}}">update</a>  
                                     |  
-                                    <a href="{{route('jnsService.delete',$row->id_jns_service)}}">delete</a>
+                                    <a href="{{route('jnsservice.delete',$row->id_jns_service)}}">delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -17,7 +17,7 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Jenis kendaraan</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Jenis Kendaraan</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -47,12 +47,13 @@
                     <div class="card-body p-0">
                         <table class="table table-striped">
                             <tr>
-                                    <td>No</td>
-                                    <td>Nama Jenis Kendaraan</td>
-                                    <td>Aksi</td>
+                            <th>No</th>
+                            <th>Nama Jenis Kendaraan</th>
+                            <th>Aksi</th>
                             </tr>
                             @php $no = 1; @endphp
                             @foreach($data as $row)
+
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$row->nm_jns_kendaraan}}</td>

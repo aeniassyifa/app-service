@@ -43,14 +43,13 @@
                     <div class="card-header"><div class="card-title">Masukkan data bro!</div></div>
                     <!--end::Header-->
                     <!--begin::Form-->
-                    @foreach($data as $row)
-                    <form action="{{route('jnsService.update',$id)}}" method="post" name="update">
+                    <form action="{{route('jnsservice.update',$id)}}" method="POST">
                     <!--begin::Body-->
                     @csrf
                     <div class="card-body">
                         <div class="mb-3">
                         <label class="form-label" for="">Nama Jenis Service</label>
-                        <input type="text" class="form-control" name="jns_service" value="{{$row->nm_jns_service}}" />
+                        <input type="text" class="form-control" name="nm_jns_service" value="{{$row->nm_jns_service ?? ''}}" />
                         </div>
                     </div>
                     <!--end::Body-->
@@ -60,7 +59,6 @@
                     </div>
                     <!--end::Footer-->
                     </form>
-                    @endforeach
                     <!--end::Form-->
                 </div>
             </div>

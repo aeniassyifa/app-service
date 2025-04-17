@@ -18,7 +18,7 @@
             <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-                <div class="col-sm-6"><h3 class="mb-0">Jenis kendaraan</h3></div>
+                <div class="col-sm-6"><h3 class="mb-0">Update Detail Service</h3></div>
                 <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -44,13 +44,21 @@
                     <!--end::Header-->
                     <!--begin::Form-->
                     @foreach($data as $row)
-                    <form action="{{route('jnsKendaraan.update',$id)}}" method="post" name="update">
+                    <form action="{{route('detailservice.update', $id)}}" method="post" name="update">
                     <!--begin::Body-->
                     @csrf
                     <div class="card-body">
                         <div class="mb-3">
-                        <label class="form-label" for="">Nama Jenis Kendaraan</label>
-                        <input type="text" class="form-control" name="jns_kendaraan" value="{{$row->nm_jns_kendaraan}}" />
+                            <label class="form-label" for="id_service">ID Service</label>
+                            <input type="text" class="form-control" name="id_service" value="{{$row->id_service}}" readonly />
+                        </div>
+                        <div class="mb-3">
+                        <label for="sparepart" class="form-label">Nama Sparepart</label>
+                        <input type="text" class="form-control" name="sparepart" value="{{$row->sparepart}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="harga">Harga</label>
+                            <input type="number" class="form-control" name="harga" value="{{$row->harga}}" />
                         </div>
                     </div>
                     <!--end::Body-->
@@ -79,8 +87,6 @@
     <!--begin::Footer-->
     @include('layout.footer')
 
-
     <!--end::Footer-->
     </div>
     @include('layout.footer')
-    

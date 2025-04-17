@@ -29,7 +29,6 @@
             </div>
             <!--end::Container-->
         </div>
-        </form>
 
         <div class="app-content">
             <!--begin::Container-->
@@ -42,14 +41,19 @@
                     <div class="card-header"><div class="card-title">Masukkan data bro!</div></div>
                     <!--end::Header-->
                     <!--begin::Form-->
-                    <form action="{{route('jnsService.store')}}" method="post" name="tambah">
+                    <form action="{{ route('jnsservice.store')}}" method="POST" name="tambah">
                     <!--begin::Body-->
                     @csrf
                     <div class="card-body">
                         <div class="mb-3">
                         <label class="form-label" for="">Nama Jenis Service</label>
-                        <input type="text" class="form-control" name="jns_service" />
+                        <input type="text" class="form-control" name="nm_jns_service" />
                         </div>
+                    </div>
+                    <!-- Input Keterangan -->
+                        <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="text" name="keterangan" id="keterangan" class="form-control" required>
                     </div>
                     <!--end::Body-->
                     <!--begin::Footer-->

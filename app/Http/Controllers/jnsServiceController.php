@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JnsService;
+use App\Models\jnsService;
 use Illuminate\Http\Request;
 
 class jnsServiceController extends Controller
@@ -12,7 +12,7 @@ class jnsServiceController extends Controller
      */
     public function index()
     {
-        $data = JnsService::get();
+        $data = jnsService::all();
         // dd($data);
         return view('jnsService.tampilJnsService', compact('data'));
     }
@@ -22,7 +22,6 @@ class jnsServiceController extends Controller
      */
     public function create()
     {
-        //untuk menampilkan form
         return view('jnsService.tambahJnsService');
     }
 
@@ -31,19 +30,20 @@ class jnsServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // insert ke sql
-        $data = new jnsService();
-        $data->nm_jns_service = $request->jns_service;
-        $post = $data->save();
-        return redirect('jnsService');
-    }
+        $request->validate([
+            'nm_jns_service' => 'required|string|max:255',
+            'keterangan'  => 'nullable|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        try {
+            jnsService::create([
+                'nm_jns_service' => $request->nm_jns_service,
+                'keterangan'     => $request->keterangan ?? '-',
+            ]);            
+            return redirect()->route('/jnsservice')->with('success', 'Jenis Service berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menambahkan Jenis Service: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -51,32 +51,45 @@ class jnsServiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
-        $data = JnsService::where('id_jns_service', '=', $id)->get();
+        $data = jnsService::where('id_jns_service', '=', $id)->first();
+
+        if (!$data) {
+            return redirect('/jnsService')->with('error', 'Data tidak ditemukan!');
+        }
+
         return view('jnsService.updateJnsService', compact('data', 'id'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
-        $data=JnsService::where('id_jns_service', '=', $id);
-        $data->update([
-            'nm_jns_service' => $request->jns_service
-        ]);
-        return redirect('jnsservice');
+        $data = jnsService::where('id_jns_service', '=', $id)->first();
+
+        if (!$data) {
+            return redirect('/jnsservice')->with('error', 'Data tidak ditemukan!');
+        }
+
+        $data->nm_jns_service = $request->nm_jns_service;
+        $data->save();
+
+        return redirect('/jnsservice')->with('success', 'Data berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-        $data=JnsService::where('id_jns_service', '=', $id);
-        $data->delete();
-        return redirect('jnsservice');
+        try {
+            $data = jnsService::findOrFail($id);
+            $data->delete();
+            return redirect()->route('jnsService.index')->with('success', 'Data berhasil dihapus!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menghapus data: ' . $e->getMessage());
+        }
     }
 }

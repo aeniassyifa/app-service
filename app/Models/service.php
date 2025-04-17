@@ -32,9 +32,9 @@ class service extends Model
         return $this->belongsTo(Mekanik::class, 'id_mekanik');
     }
 
-    public function jenis_service()
+    public function jns_service()
     {
-        return $this->belongsTo(jnsService::class, 'id_jns_service');
+        return $this->belongsTo(JnsService::class, 'id_jns_service');
     }
 
     public function detail_services()
