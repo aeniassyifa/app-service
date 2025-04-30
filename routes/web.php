@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dataController;
 use App\Http\Controllers\detailServiceController;
 use App\Http\Controllers\jnsKendaraanController;
 use App\Http\Controllers\jnsServiceController;
@@ -88,5 +89,8 @@ Route::post('/user/add', [userController::class, 'store'])->name('user.store');
 Route::get('/user/edit/{id}', [userController::class, 'edit'])->name('user.edit');
 Route::post('/user/edit/{id}', [userController::class, 'update'])->name('user.update');
 Route::get('/user/delete/{id}', [userController::class, 'destroy'])->name('user.delete');
+
+// Routes untuk data
+Route::get('/user', [dataController::class, 'index'])->name('Data.index');
 
 
